@@ -46,7 +46,7 @@ public class Chair : MonoBehaviour
                 interactableObject.SetChair(this);
                 hasBlood = true;
 
-                line.gameObject.SetActive(false);
+                Destroy(line);
             }
             }
             else
