@@ -14,7 +14,7 @@ public class Counter : BasePlatform
     {
         if (!HasInteractableObject()){
             
-
+                
             if (player2.HasInteractableObject()) {
                 
                 player2.GetInteractableObject().SetInteractableObjectParent(this);
