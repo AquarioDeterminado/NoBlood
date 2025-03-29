@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ScopeMovement : MonoBehaviour
 {
+	[SerializeField] private FirstMinigameController minigameController;
+	
 	[SerializeField] private float minX = -2.58f;
 	[SerializeField] private float maxX = 1.65f;
 	[SerializeField] private float minY = -3f;
@@ -104,15 +106,11 @@ public class ScopeMovement : MonoBehaviour
 	{
 		if (collision.gameObject.CompareTag("Plain") && gameOver == false)
 		{
-			gameOver = true;
-			Debug.Log("Collided with Plain - Triggering Lose Condition");
-			// Implement your Lose popup here
+			minigameController.End(false);
 		}
 		else if (collision.gameObject.CompareTag("Arm") && gameOver == false)
 		{
-			gameOver = true;
-			Debug.Log("Collided with Arm - Triggering Win Condition");
-			// Implement your Win popup here
+			minigameController.End(true);
 		}
 	}
 }

@@ -20,6 +20,7 @@ public class GameController : MonoBehaviour
     private float timeToNextPatient = 0.0f;
     
     [SerializeField] GameObject Minigame1Controller;
+    [SerializeField] Line patientLine;
     
     [SerializeField] GameObject Minigame2Controller;
     private SecondMinigameMaanger _minigame2Controller;
@@ -79,7 +80,11 @@ public class GameController : MonoBehaviour
     
     public void endMinigame1(bool win)
     {
-        if (win) AddPoints();
+        if (win)
+        {
+            AddPoints();
+            patientLine.OnMinigame1Win();
+        }
         else AddTimePenalty();
         
         cameraMinigame1.SetActive(false);
