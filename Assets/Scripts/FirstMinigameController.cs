@@ -6,6 +6,8 @@ public class FirstMinigameController : MonoBehaviour
 {
     
     [SerializeField] private GameController gameController;
+    
+    private bool _started = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,11 +22,15 @@ public class FirstMinigameController : MonoBehaviour
 
     public void StartMinigame()
     {
-        
+        _started = true;
     }
     
     public void End(bool win)
     {
-        gameController.endMinigame1(win);
+        if (_started)
+        {
+            gameController.endMinigame1(win);
+            _started = false;
+        }
     }
 }

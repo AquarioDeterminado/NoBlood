@@ -52,28 +52,24 @@ public class ScopeMovement : MonoBehaviour
 				// Apply upward force (along Y axis using local up direction)
 				Vector3 upwardForce = transform.up * 5f;  // Apply force upwards in the object's local space
 				rb.AddForce(upwardForce, ForceMode.Impulse);  // Use Impulse to apply immediate force
-				Debug.Log($"Upward Force Applied: {upwardForce}");
 			}
 			else if (Input.GetKeyDown(KeyCode.A))
 			{
 				// Apply leftward force (along X axis using local left direction)
 				Vector3 leftwardForce = -transform.right * 5f;  // Apply force left in the object's local space
 				rb.AddForce(leftwardForce, ForceMode.Impulse);  // Use Impulse to apply immediate force
-				Debug.Log($"Leftward Force Applied: {leftwardForce}");
 			}
 			else if (Input.GetKeyDown(KeyCode.S))
 			{
 				// Apply downward force (along Y axis using local down direction)
 				Vector3 downwardForce = -transform.up * 5f;  // Apply force downwards in the object's local space
 				rb.AddForce(downwardForce, ForceMode.Impulse);  // Use Impulse to apply immediate force
-				Debug.Log($"Downward Force Applied: {downwardForce}");
 			}
 			else if (Input.GetKeyDown(KeyCode.D))
 			{
 				// Apply rightward force (along X axis using local right direction)
 				Vector3 rightwardForce = transform.right * 5f;  // Apply force right in the object's local space
 				rb.AddForce(rightwardForce, ForceMode.Impulse);  // Use Impulse to apply immediate force
-				Debug.Log($"Rightward Force Applied: {rightwardForce}");
 			}
 			else if (Input.GetKeyDown(KeyCode.Space))
 			{
@@ -84,7 +80,6 @@ public class ScopeMovement : MonoBehaviour
 				// Apply force forward along the Z-axis
 				Vector3 forwardForce = transform.forward * 40f;
 				rb.AddForce(forwardForce, ForceMode.Impulse);
-				Debug.Log($"Forward Force Applied: {forwardForce}");
 			}
 		}
 	}
@@ -99,7 +94,6 @@ public class ScopeMovement : MonoBehaviour
 		randomPoint = new Vector3(randomX, randomY, transform.position.z);
 
 		// Output the results (or use the numbers as needed)
-		Debug.Log($"New Random Point: {randomPoint}");
 	}
 
 	private void OnCollisionEnter(Collision collision)

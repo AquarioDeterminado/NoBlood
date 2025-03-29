@@ -582,6 +582,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc1e185a493c30a4ebc82fa36cc886c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minigameController: {fileID: 1457690099}
   minX: -2.58
   maxX: 1.65
   minY: -3
@@ -2607,7 +2608,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1a251c3e79414830a4d3f62aec0ad1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameController: {fileID: 0}
+  gameController: {fileID: 2035671247}
 --- !u!1 &1488514511
 GameObject:
   m_ObjectHideFlags: 0
@@ -2621,7 +2622,7 @@ GameObject:
   - component: {fileID: 1488514513}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: MainCamera
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3320,12 +3321,12 @@ MonoBehaviour:
   pointCounter: {fileID: 0}
   waitingRoom: {fileID: 1727513841}
   maxTimeBetewenPatient: 2
-  Minigame1Controller: {fileID: 0}
-  patientLine: {fileID: 0}
-  Minigame2Controller: {fileID: 0}
-  cameraPlayer1: {fileID: 0}
+  minigame1Controller: {fileID: 1457690099}
+  patientLine: {fileID: 82151832}
+  Minigame2Controller: {fileID: 384603991}
+  cameraPlayer1: {fileID: 565310708}
   cameraPlayer2: {fileID: 0}
-  cameraMinigame1: {fileID: 0}
+  cameraMinigame1: {fileID: 1488514511}
   cameraMinigame2: {fileID: 0}
 --- !u!4 &2035671248
 Transform:

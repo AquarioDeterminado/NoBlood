@@ -19,7 +19,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private int maxTimeBetewenPatient = 2;
     private float timeToNextPatient = 0.0f;
     
-    [SerializeField] GameObject Minigame1Controller;
+    [SerializeField] FirstMinigameController minigame1Controller;
     [SerializeField] Line patientLine;
     
     [SerializeField] GameObject Minigame2Controller;
@@ -74,6 +74,8 @@ public class GameController : MonoBehaviour
 
     public void StartMinigame1()
     {
+        minigame1Controller.StartMinigame();
+        
         cameraMinigame1.SetActive(true);
         cameraPlayer1.SetActive(false);
     }
