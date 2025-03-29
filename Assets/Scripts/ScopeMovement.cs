@@ -71,7 +71,7 @@ public class ScopeMovement : MonoBehaviour
 				Vector3 rightwardForce = transform.right * 5f;  // Apply force right in the object's local space
 				rb.AddForce(rightwardForce, ForceMode.Impulse);  // Use Impulse to apply immediate force
 			}
-			else if (Input.GetKeyDown(KeyCode.Space))
+			else if (Input.GetKeyDown(KeyCode.E))
 			{
 				// Force stop the object
 				rb.velocity = Vector3.zero;

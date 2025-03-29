@@ -61,7 +61,7 @@ public partial class @PlayerInputAction2: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""up"",
                     ""id"": ""b33a142c-64f4-4d17-823e-8df1842bed94"",
-                    ""path"": ""<Keyboard>/upArrow"",
+                    ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -72,7 +72,7 @@ public partial class @PlayerInputAction2: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""down"",
                     ""id"": ""58410f5e-bbee-417a-b44e-f29556ba5058"",
-                    ""path"": ""<Keyboard>/downArrow"",
+                    ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -83,7 +83,7 @@ public partial class @PlayerInputAction2: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""left"",
                     ""id"": ""8461e98c-bc73-45fc-b040-800f99a0c261"",
-                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -94,7 +94,7 @@ public partial class @PlayerInputAction2: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""right"",
                     ""id"": ""168e6a94-c181-482f-af5e-86bfe1f2fcca"",
-                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -105,7 +105,7 @@ public partial class @PlayerInputAction2: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""d40988ad-cce5-4802-9d21-c039b2c84f56"",
-                    ""path"": ""<Keyboard>/m"",
+                    ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

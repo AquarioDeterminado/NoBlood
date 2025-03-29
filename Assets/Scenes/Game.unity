@@ -202,7 +202,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactableObjectS0: {fileID: 11400000, guid: 42a21f9ce376d437fb724d168689a968, type: 2}
   spawnPoint: {fileID: 808354552}
-  gameController: {fileID: 2035671247}
   HasPerson: 0
 --- !u!65 &82151833
 BoxCollider:
@@ -733,7 +732,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 955611c0630644e8799df5c627dab1d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
+  moveSpeed: 5
   gameInput: {fileID: 408205142}
 --- !u!1 &384603991
 GameObject:
@@ -1478,7 +1477,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d0c00cdf266b4cbcb8f4bf1ad60622c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
+  moveSpeed: 3
   gameInput2: {fileID: 593565614}
 --- !u!1 &808354551
 GameObject:
@@ -1788,7 +1787,9 @@ MonoBehaviour:
   grabPoint: {fileID: 2019463810}
   secondChair: {fileID: 0}
   testing: 0
+  carryPoint: {fileID: 808354551}
   hasBlood: 0
+  gameController: {fileID: 2035671247}
 --- !u!65 &925197785
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3322,7 +3323,7 @@ MonoBehaviour:
   waitingRoom: {fileID: 1727513841}
   maxTimeBetewenPatient: 2
   minigame1Controller: {fileID: 1457690099}
-  patientLine: {fileID: 82151832}
+  patientChair: {fileID: 925197784}
   Minigame2Controller: {fileID: 384603991}
   cameraPlayer1: {fileID: 565310708}
   cameraPlayer2: {fileID: 0}
