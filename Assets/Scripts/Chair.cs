@@ -6,6 +6,7 @@ public class Chair : MonoBehaviour
     [SerializeField] private Transform grabPoint;
     [SerializeField] private Chair secondChair;
     [SerializeField] private bool testing;
+    private Line line;
 
     private InteractableObject interactableObject;
 
@@ -21,20 +22,24 @@ public class Chair : MonoBehaviour
     }
     public void Interact()
     {
-        if (interactableObject == null)
+        if (line.HasPerson == true)
         {
-            Debug.Log("Interact!");
-            Transform interactableObjectTransform = Instantiate(interactableObjectS0.prefab, grabPoint);
-            interactableObjectTransform.localPosition = Vector3.zero;
+            if (interactableObject == null)
+            {
+                Debug.Log("Interact!");
+                Transform interactableObjectTransform = Instantiate(interactableObjectS0.prefab, grabPoint);
+                interactableObjectTransform.localPosition = Vector3.zero;
 
-            Debug.Log(interactableObjectTransform.GetComponent<InteractableObject>().GetInteractableObjectS0().objectName);
+                Debug.Log(interactableObjectTransform.GetComponent<InteractableObject>().GetInteractableObjectS0().objectName);
 
-            interactableObject = interactableObjectTransform.GetComponent<InteractableObject>();
-            interactableObject.SetChair(this);
-        }
-        else
-        {
-            Debug.Log(interactableObject.GetChair());
+                interactableObject = interactableObjectTransform.GetComponent<InteractableObject>();
+                interactableObject.SetChair(this);
+            }
+            else
+            {
+                Debug.Log(interactableObject.GetChair());
+            }
+
         }
        
 

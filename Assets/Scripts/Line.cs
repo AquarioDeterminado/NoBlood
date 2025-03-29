@@ -8,6 +8,8 @@ public class Line : MonoBehaviour
     [SerializeField] private InteractableObjectS0 interactableObjectS0;
     [SerializeField] private Transform spawnPoint;
 
+    public bool HasPerson;
+
     private InteractableObject interactableObject;
     public void Interact()
     {
@@ -15,7 +17,8 @@ public class Line : MonoBehaviour
         {
             Transform interactableObjectTransform = Instantiate(this.interactableObjectS0.prefab, spawnPoint);
             interactableObjectTransform.localPosition = Vector3.zero;
-            interactableObject = interactableObjectTransform.GetComponent<InteractableObject>();    
+            interactableObject = interactableObjectTransform.GetComponent<InteractableObject>();
+            HasPerson = true;
         }
         
 

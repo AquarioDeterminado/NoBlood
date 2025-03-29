@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e35776fcd0b74ec479106fc85f06fc71, type: 3}
   m_Name: Blood
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 8760181538723723839, guid: b46778c3c1025b14a8e11747704d2f77, type: 3}
   sprite: {fileID: 0}
+  objectName: Blood
