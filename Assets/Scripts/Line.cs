@@ -1,26 +1,33 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Line : MonoBehaviour
 {
-    [SerializeField] private InteractableObjectS0 interactableObjectS0;
-    [SerializeField] private Transform spawnPoint;
+    [SerializeField] private Transform carryPoint;
+    [SerializeField] private InteractableObjectSO interactableObjectSO;
 
-    public bool HasPerson = false;
+    private Transform interactObjectTransform; // Reference to the spawned object
 
-    private InteractableObject interactableObject;
     public void Interact()
     {
-        if(interactableObject == null)
+        if (interactObjectTransform == null)  // Check if the object was destroyed already
         {
-            Transform interactableObjectTransform = Instantiate(interactableObjectS0.prefab, spawnPoint);
-            interactableObjectTransform.localPosition = Vector3.zero;
-            interactableObject = interactableObjectTransform.GetComponent<InteractableObject>();
-            HasPerson = true;
+            interactObjectTransform = Instantiate(interactableObjectSO.prefab, carryPoint);
+            interactObjectTransform.localPosition = Vector3.zero;
         }
-        
+    }
 
+    public void DestroyInteractableObject()
+    {
+        if (interactObjectTransform != null)
+        {
+            Destroy(interactObjectTransform.gameObject);
+            interactObjectTransform = null;
+        }
+    }
+
+    // Corrected this method: it should return true if an object exists, false if it doesn't.
+    public bool HasSpawnedObject()
+    {
+        return interactObjectTransform != null;  // Return true if there is a spawned object
     }
 }

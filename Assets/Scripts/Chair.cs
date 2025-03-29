@@ -1,61 +1,25 @@
 using UnityEngine;
 
-public class Chair : MonoBehaviour
+public class Chair : BasePlatform
 {
-    [SerializeField] private InteractableObjectS0 interactableObjectS0;
-    [SerializeField] private Transform grabPoint;
-    [SerializeField] private Chair secondChair;
-    [SerializeField] private bool testing;
-    private Line line;
-    public bool hasBlood = false;
+    [SerializeField] private InteractableObjectSO interactableObjectSO;
+    private Line line;  // Reference to the Line class
 
-    private InteractableObject interactableObject;
-
-
-    private void Start()
+    public override void Interact(Player2 player2)
     {
-        line = FindObjectOfType<Line>(); // Ensure it's assigned properly
-    }
+        // Find the line in the scene (adjust according to how you manage the Line reference)
+        line = FindObjectOfType<Line>(); // Or another way to reference the Line
 
-    private void Update()
-    {
-        if(testing && Input.GetKeyDown(KeyCode.T))
+        // Check if the spawned object in Line is destroyed
+        if (line.HasSpawnedObject())
         {
-            if (interactableObject != null) {
-                interactableObject.SetChair(secondChair);
-                Debug.Log(interactableObject.GetChair());
-            }
+            line.DestroyInteractableObject();
+            Debug.Log("Cannot interact with chair until spawned object is destroyed.");
+            return; // Exit if the object hasn't been destroyed
         }
+
+        // If no spawned object exists (it was destroyed), interact with the chair
+        Transform interactObjectTransform = Instantiate(interactableObjectSO.prefab);
+        interactObjectTransform.GetComponent<InteractableObject>().SetInteractableObjectParent(player2);
     }
-    public void Interact()
-    {
-       
-        
-            if (interactableObject == null)
-            {
-            if (line.HasPerson == true)
-            {
-                Debug.Log("Interact!");
-                Transform interactableObjectTransform = Instantiate(interactableObjectS0.prefab, grabPoint);
-                interactableObjectTransform.localPosition = Vector3.zero;
-
-
-                Debug.Log(interactableObjectTransform.GetComponent<InteractableObject>().GetInteractableObjectS0().objectName);
-
-                interactableObject = interactableObjectTransform.GetComponent<InteractableObject>();
-                interactableObject.SetChair(this);
-                hasBlood = true;
-
-                Destroy(line);
-            }
-            }
-            else
-            {
-                Debug.Log(interactableObject.GetChair());
-            }
-
-        }
-       
-
-    
 }

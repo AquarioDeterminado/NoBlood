@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4444a162f68413d82253ffc942720d4, type: 3}
   m_Name: Doner
   m_EditorClassIdentifier: 
-  prefab: {fileID: 524367153330244556, guid: ab888d172e6794e4c814b8f5742d0e4d, type: 3}
+  prefab: {fileID: 6029056904706898560, guid: ab888d172e6794e4c814b8f5742d0e4d, type: 3}
   sprite: {fileID: 0}
   objectName: 

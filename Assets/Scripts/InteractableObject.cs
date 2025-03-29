@@ -4,16 +4,34 @@ using UnityEngine;
 
 public class InteractableObject : MonoBehaviour
 {
-    [SerializeField] private InteractableObjectS0 interactableObjectS0;
+    [SerializeField] private InteractableObjectSO interactableObjectSO;
 
-    private Chair chair;
-    public InteractableObjectS0 GetInteractableObjectS0() {
-    return interactableObjectS0;
+    private IInterectableObjectParent interactableObjectParent;
+    public InteractableObjectSO GetInteractableObjectSO() {
+    return interactableObjectSO;
     }
 
-    public void SetChair(Chair chair) { }
+    public void SetInteractableObjectParent(IInterectableObjectParent interactableObjectParent) {
+        if (this.interactableObjectParent != null) { 
+            this.interactableObjectParent.ClearInteractableObject();
+        
+        }
+        this.interactableObjectParent = interactableObjectParent;
 
-    public Chair GetChair() { return chair; }
+        if (interactableObjectParent.HasInteractableObject())
+        {
+            Debug.LogError("IInteractableObjectParent already has a object");
+        }
+        interactableObjectParent.SetInteractableObject(this);
+
+        transform.parent = interactableObjectParent.GetInteractableObjectFollowTransform();
+        transform.localPosition = Vector3.zero;
+    }
+
+    public IInterectableObjectParent GetInteractableObjectParent() 
+    { 
+        return interactableObjectParent; 
+    }
 
     
     

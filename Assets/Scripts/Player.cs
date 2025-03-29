@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IInterectableObjectParent
 {
 
     [SerializeField] private int moveSpeed;
     [SerializeField] private GameInput gameInput;
+
+    private InteractableObject interactableObject;
+    [SerializeField] private Transform grabPoint;
 
     private Vector3 lastInteractDir;
 
@@ -31,15 +34,12 @@ public class Player : MonoBehaviour
         float interactDistance = 2f;
         if (Physics.Raycast(transform.position, lastInteractDir, out RaycastHit raycastHit, interactDistance))
         {
-            if (raycastHit.transform.TryGetComponent(out Line line))
+            if (raycastHit.transform.TryGetComponent(out BasePlatform basePlatform))
             {
-                line.Interact();
+                //basePlatform.Interact(this);
             }
 
-            else if (raycastHit.transform.TryGetComponent(out Chair chair))
-            {
-                chair.Interact();
-            }
+
 
         }
     }
@@ -65,13 +65,10 @@ public class Player : MonoBehaviour
         float interactDistance = 2f;
         if(Physics.Raycast(transform.position, lastInteractDir, out RaycastHit raycastHit, interactDistance))
         {
-           if( raycastHit.transform.TryGetComponent(out Line line))
+           if( raycastHit.transform.TryGetComponent(out Counter counter))
             {
             }
-            else if (raycastHit.transform.TryGetComponent(out Chair chair))
-            {
-               
-            }
+            
 
         }
       
@@ -122,5 +119,32 @@ public class Player : MonoBehaviour
 
         float rotateSpeed = 10f;
         transform.forward = Vector3.Slerp(transform.forward, moveDir, Time.deltaTime * rotateSpeed);
+    }
+
+
+    public Transform GetInteractableObjectFollowTransform()
+    {
+        return grabPoint;
+    }
+
+    public void SetInteractableObject(InteractableObject interactableObject)
+    {
+        this.interactableObject = interactableObject;
+    }
+
+    public InteractableObject GetInteractableObject()
+    {
+        return interactableObject;
+
+    }
+
+    public void ClearInteractableObject()
+    {
+        interactableObject = null;
+    }
+
+    public bool HasInteractableObject()
+    {
+        return interactableObject != null;
     }
 }

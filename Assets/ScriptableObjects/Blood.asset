@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 8760181538723723839, guid: b46778c3c1025b14a8e11747704d2f77, type: 3}
   sprite: {fileID: 0}
-  objectName: 
+  objectName: Blood

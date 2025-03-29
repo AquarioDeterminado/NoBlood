@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Player2 : MonoBehaviour
+public class Player2 : MonoBehaviour, IInterectableObjectParent
 {
 
     [SerializeField] private float moveSpeed;
     [SerializeField] private GameInput2 gameInput2;
+
+    private InteractableObject interactableObject;
+    [SerializeField] private Transform grabPoint;
+
 
 
     private Vector3 lastInteractDir;
@@ -30,22 +34,20 @@ public class Player2 : MonoBehaviour
         {
             lastInteractDir = moveDir;
         }
-        float interactDistance = 2f;
+        float interactDistance = 4f;
         if (Physics.Raycast(transform.position, lastInteractDir, out RaycastHit raycastHit, interactDistance))
         {
-            if (raycastHit.transform.TryGetComponent(out Chair chair))
-            {
-                chair.Interact();
-            }
 
-            else if (raycastHit.transform.TryGetComponent(out Line line))
+             if(raycastHit.transform.TryGetComponent(out BasePlatform basePlatform))
+            {
+                Debug.Log("Interact"!);
+                basePlatform.Interact(this); 
+            }
+            if (raycastHit.transform.TryGetComponent(out Line line))
             {
                 line.Interact();
             }
-            else if (raycastHit.transform.TryGetComponent(out Balcony balcony))
-            {
-                balcony.Interact();
-            }
+
         }
     }
     private void Update()
@@ -73,13 +75,10 @@ public class Player2 : MonoBehaviour
             if (raycastHit.transform.TryGetComponent(out Line line))
             {
             }
-            else if (raycastHit.transform.TryGetComponent(out Chair chair))
+            if (raycastHit.transform.TryGetComponent(out Counter counter))
             {
             }
-            else if (raycastHit.transform.TryGetComponent(out Balcony balcony))
-            {
-                
-            }
+
         }
 
     }
@@ -129,5 +128,31 @@ public class Player2 : MonoBehaviour
         float rotateSpeed = 10f;
         transform.forward = Vector3.Slerp(transform.forward, moveDir, Time.deltaTime * rotateSpeed);
 
+    }
+
+    public Transform GetInteractableObjectFollowTransform()
+    {
+        return grabPoint;
+    }
+
+    public void SetInteractableObject(InteractableObject interactableObject)
+    {
+        this.interactableObject = interactableObject;
+    }
+
+    public InteractableObject GetInteractableObject()
+    {
+        return interactableObject;
+
+    }
+
+    public void ClearInteractableObject()
+    {
+        interactableObject = null;
+    }
+
+    public bool HasInteractableObject()
+    {
+        return interactableObject != null;
     }
 }
