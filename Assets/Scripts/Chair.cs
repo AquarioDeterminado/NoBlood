@@ -6,6 +6,19 @@ public class Chair : BasePlatform
     private Line line;  // Reference to the Line class
 
     public override void Interact(Player2 player2)
+    [SerializeField] private InteractableObjectS0 interactableObjectS0;
+    [SerializeField] private Transform grabPoint;
+    [SerializeField] private Chair secondChair;
+    [SerializeField] private bool testing;
+    [SerializeField] private GameObject carryPoint;
+    private Line line;
+    public bool hasBlood = false;
+
+    private InteractableObject interactableObject;
+
+    [SerializeField] private GameController gameController;
+
+    private void Start()
     {
         // Find the line in the scene (adjust according to how you manage the Line reference)
         line = FindObjectOfType<Line>(); // Or another way to reference the Line
@@ -22,4 +35,37 @@ public class Chair : BasePlatform
         Transform interactObjectTransform = Instantiate(interactableObjectSO.prefab);
         interactObjectTransform.GetComponent<InteractableObject>().SetInteractableObjectParent(player2);
     }
+
+    public void Interact()
+    {
+        gameController.StartMinigame1();
+    }
+
+    public void OnMinigameWin()
+    {
+        if (interactableObject == null)
+        {
+            if (line.HasPerson)
+            {
+                Transform interactableObjectTransform = Instantiate(interactableObjectS0.prefab, grabPoint);
+                interactableObjectTransform.localPosition = Vector3.zero;
+
+                interactableObject = interactableObjectTransform.GetComponent<InteractableObject>();
+                interactableObject.SetChair(this);
+                hasBlood = true;
+
+                Destroy(line);
+            }
+        }
+        else
+        {
+            Debug.Log(interactableObject.GetChair());
+        }
+    }
+
+    public void OnMinigameLose()
+    {
+        Destroy(carryPoint.transform.GetChild(0).gameObject);
+    }
+
 }

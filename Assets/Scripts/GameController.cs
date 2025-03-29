@@ -19,7 +19,8 @@ public class GameController : MonoBehaviour
     [SerializeField] private int maxTimeBetewenPatient = 2;
     private float timeToNextPatient = 0.0f;
     
-    [SerializeField] GameObject Minigame1Controller;
+    [SerializeField] FirstMinigameController minigame1Controller;
+    [SerializeField] Chair patientChair;
     
     [SerializeField] GameObject Minigame2Controller;
     private SecondMinigameMaanger _minigame2Controller;
@@ -35,6 +36,9 @@ public class GameController : MonoBehaviour
         SeatManager = waitingRoom.GetComponent<PacientSeatManager>();
         
         _minigame2Controller = Minigame2Controller.GetComponent<SecondMinigameMaanger>();
+        
+        endMinigame1(false);
+        //endMinigame2(false);
     }
 
     // Update is called once per frame
@@ -73,14 +77,24 @@ public class GameController : MonoBehaviour
 
     public void StartMinigame1()
     {
+        minigame1Controller.StartMinigame();
+        
         cameraMinigame1.SetActive(true);
         cameraPlayer1.SetActive(false);
     }
     
     public void endMinigame1(bool win)
     {
-        if (win) AddPoints();
-        else AddTimePenalty();
+        if (win)
+        {
+            AddPoints();
+            patientChair.OnMinigameWin();
+        }
+        else
+        {
+            AddTimePenalty();
+            patientChair.OnMinigameLose();
+        }
         
         cameraMinigame1.SetActive(false);
         cameraPlayer1.SetActive(true);
@@ -102,9 +116,5 @@ public class GameController : MonoBehaviour
         cameraMinigame2.SetActive(false);
         cameraPlayer2.SetActive(true);
     }
-
-  
-    
-    
 }
 

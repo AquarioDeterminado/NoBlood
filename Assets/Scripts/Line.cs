@@ -6,6 +6,10 @@ public class Line : MonoBehaviour
     [SerializeField] private InteractableObjectSO interactableObjectSO;
 
     private Transform interactObjectTransform; // Reference to the spawned object
+    [SerializeField] private InteractableObjectS0 interactableObjectS0;
+    [SerializeField] private Transform spawnPoint;
+    
+    public bool HasPerson = false;
 
     public void Interact()
     {
