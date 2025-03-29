@@ -5,7 +5,7 @@ public class Chair : BasePlatform
     [SerializeField] private InteractableObjectSO interactableObjectSO;
     private Line line;  // Reference to the Line class
 
-    public override void Interact(Player2 player2)
+    public override void Interact(Player2 player2);
     [SerializeField] private InteractableObjectS0 interactableObjectS0;
     [SerializeField] private Transform grabPoint;
     [SerializeField] private Chair secondChair;
@@ -56,10 +56,6 @@ public class Chair : BasePlatform
 
                 Destroy(line);
             }
-        }
-        else
-        {
-            Debug.Log(interactableObject.GetChair());
         }
     }
 
