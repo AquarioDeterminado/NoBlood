@@ -15,7 +15,7 @@ public class Line : MonoBehaviour
     {
         if(interactableObject == null)
         {
-            Transform interactableObjectTransform = Instantiate(this.interactableObjectS0.prefab, spawnPoint);
+            Transform interactableObjectTransform = Instantiate(interactableObjectS0.prefab, spawnPoint);
             interactableObjectTransform.localPosition = Vector3.zero;
             interactableObject = interactableObjectTransform.GetComponent<InteractableObject>();
             HasPerson = true;

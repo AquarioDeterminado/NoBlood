@@ -24,7 +24,6 @@ public class PacientSeatManager : MonoBehaviour
         foreach (var seat in _seats) {
             if (!seat.IsOccupied()) {
                 seat.SetOccupied(true);
-                Debug.Log("Patient added");
                 Instantiate(patientPrefab, seat.transform);
                 return seat;
             }

@@ -53,7 +53,6 @@ public class GameController : MonoBehaviour
         {
             timeToNextPatient = (float) random.Next(0, maxTimeBetewenPatient * 100) / 100;
             SeatManager.AddPatient();
-            Debug.Log("Time to next patient: " + timeToNextPatient);
         }
     }
     
