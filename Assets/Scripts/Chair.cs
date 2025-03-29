@@ -1,31 +1,42 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Chair : MonoBehaviour
 {
-    [SerializeField] private Transform bloodPrefab;
+    [SerializeField] private InteractableObjectS0 interactableObjectS0;
     [SerializeField] private Transform grabPoint;
-    private Line lineScript; // Reference to the Line script to remove the doner
+    [SerializeField] private Chair secondChair;
+    [SerializeField] private bool testing;
 
-    private void Start()
+    private InteractableObject interactableObject;
+
+    private void Update()
     {
-        // Find the Line script in the scene (assuming the Line is attached to the same object or can be referenced in some way)
-        lineScript = FindObjectOfType<Line>(); // Or reference it directly if needed
+        if(testing && Input.GetKeyDown(KeyCode.T))
+        {
+            if (interactableObject != null) {
+                interactableObject.SetChair(secondChair);
+                Debug.Log(interactableObject.GetChair());
+            }
+        }
     }
-
     public void Interact()
     {
-        Debug.Log("Interact");
-
-        // Remove the doner (from the Line interaction) when interacting with the chair
-        if (lineScript != null)
+        if (interactableObject == null)
         {
-            lineScript.RemoveDoner(); // Remove the doner from the scene
-        }
+            Debug.Log("Interact!");
+            Transform interactableObjectTransform = Instantiate(interactableObjectS0.prefab, grabPoint);
+            interactableObjectTransform.localPosition = Vector3.zero;
 
-        // Instantiate the bloodPrefab at the chair's grabPoint
-        Transform bloodTransform = Instantiate(bloodPrefab, grabPoint);
-        bloodTransform.localPosition = Vector3.zero;
+            Debug.Log(interactableObjectTransform.GetComponent<InteractableObject>().GetInteractableObjectS0().objectName);
+
+            interactableObject = interactableObjectTransform.GetComponent<InteractableObject>();
+            interactableObject.SetChair(this);
+        }
+        else
+        {
+            Debug.Log(interactableObject.GetChair());
+        }
+       
+
     }
 }

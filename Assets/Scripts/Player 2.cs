@@ -37,14 +37,14 @@ public class Player2 : MonoBehaviour
             {
                 chair.Interact();
             }
-            
-            else if(raycastHit.transform.TryGetComponent(out Line line))
+
+            else if (raycastHit.transform.TryGetComponent(out Line line))
             {
                 line.Interact();
             }
             else if (raycastHit.transform.TryGetComponent(out Balcony balcony))
             {
-                line.Interact();
+                balcony.Interact();
             }
         }
     }
@@ -76,8 +76,12 @@ public class Player2 : MonoBehaviour
             else if (raycastHit.transform.TryGetComponent(out Chair chair))
             {
             }
+            else if (raycastHit.transform.TryGetComponent(out Balcony balcony))
+            {
+                
+            }
         }
-      
+
     }
 
     private void HandleMovement()

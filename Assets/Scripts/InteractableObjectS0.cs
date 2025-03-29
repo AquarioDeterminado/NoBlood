@@ -7,5 +7,5 @@ public class InteractableObjectS0 : ScriptableObject
 {
     public Transform prefab;
     public Sprite sprite;
-    private string objectName;
+    public string objectName;
 }

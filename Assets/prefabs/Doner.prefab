@@ -116,6 +116,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 524367153330244556}
+  - component: {fileID: 4992230821008905539}
   m_Layer: 0
   m_Name: Doner
   m_TagString: Untagged
@@ -139,6 +140,19 @@ Transform:
   - {fileID: 928529470694951257}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4992230821008905539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5401370108992147965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a2a3028b3c994c49b46d554aae747ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactableObjectS0: {fileID: 11400000, guid: b92af6fc8f395584a997153f73793483, type: 2}
 --- !u!1001 &9112388411691572346
 PrefabInstance:
   m_ObjectHideFlags: 0
