@@ -7,8 +7,15 @@ public class Chair : MonoBehaviour
     [SerializeField] private Chair secondChair;
     [SerializeField] private bool testing;
     private Line line;
+    public bool hasBlood = false;
 
     private InteractableObject interactableObject;
+
+
+    private void Start()
+    {
+        line = FindObjectOfType<Line>(); // Ensure it's assigned properly
+    }
 
     private void Update()
     {
@@ -22,18 +29,25 @@ public class Chair : MonoBehaviour
     }
     public void Interact()
     {
-        if (line.HasPerson == true)
-        {
+       
+        
             if (interactableObject == null)
+            {
+            if (line.HasPerson == true)
             {
                 Debug.Log("Interact!");
                 Transform interactableObjectTransform = Instantiate(interactableObjectS0.prefab, grabPoint);
                 interactableObjectTransform.localPosition = Vector3.zero;
 
+
                 Debug.Log(interactableObjectTransform.GetComponent<InteractableObject>().GetInteractableObjectS0().objectName);
 
                 interactableObject = interactableObjectTransform.GetComponent<InteractableObject>();
                 interactableObject.SetChair(this);
+                hasBlood = true;
+
+                line.gameObject.SetActive(false);
+            }
             }
             else
             {
@@ -43,5 +57,5 @@ public class Chair : MonoBehaviour
         }
        
 
-    }
+    
 }

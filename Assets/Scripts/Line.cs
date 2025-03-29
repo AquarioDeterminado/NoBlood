@@ -8,7 +8,7 @@ public class Line : MonoBehaviour
     [SerializeField] private InteractableObjectS0 interactableObjectS0;
     [SerializeField] private Transform spawnPoint;
 
-    public bool HasPerson;
+    public bool HasPerson = false;
 
     private InteractableObject interactableObject;
     public void Interact()

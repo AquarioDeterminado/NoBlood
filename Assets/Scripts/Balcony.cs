@@ -5,6 +5,12 @@ public class Balcony : MonoBehaviour
 
     [SerializeField] private InteractableObjectS0 interactableObjectS0;
     [SerializeField] private Transform topPoint;
+    private Chair chair;
+
+    private void Start()
+    {
+        chair = FindObjectOfType<Chair>(); // Ensure it's assigned properly
+    }
     public void Interact()
     {
         Debug.Log("Interact!");
