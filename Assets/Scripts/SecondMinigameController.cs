@@ -19,6 +19,9 @@ public enum BloodType
 
 public class SecondMinigameMaanger : MonoBehaviour
 {
+    [SerializeField] private GameObject GameController;
+    private GameController gameController;
+    
     // GameObject Placeholders
     [SerializeField] private GameObject bloodBagTarget;
     [FormerlySerializedAs("fileTargetfirst")] [SerializeField] private GameObject fileTargetFirst;
@@ -52,20 +55,16 @@ public class SecondMinigameMaanger : MonoBehaviour
     private BloodType _firstFileType;
     private BloodType _secondFileType;
     private BloodType _thirdFileType;
-    public BloodType rigthFile;
+    private BloodType _rightFile;
     
     // Start is called before the first frame update
     void Start()
     {
+        gameController = GameController.GetComponent<GameController>();
+        
         PacientFileComponentFirst = fileTargetFirst.GetComponent<PacientFile>();
         PacientFileComponentSecond = fileTargetSecond.GetComponent<PacientFile>();
         PacientFileComponentThird = fileTargetThird.GetComponent<PacientFile>();
-        
-        StartMinigame();
-        
-        Debug.Log("Bag Type: " + _bagType);
-        Debug.Log("Rigth File: " + rigthFile);
-        Debug.Log("Left: " + _firstFileType +"; Middle: " + _secondFileType + "; Right: " + _thirdFileType);
     }
 
     // Update is called once per frame
@@ -74,7 +73,7 @@ public class SecondMinigameMaanger : MonoBehaviour
         
     }
 
-    void StartMinigame()
+    public void StartMinigame()
     {
         Random random = new Random();
         Array allBloodTypes = Enum.GetValues(typeof(BloodType));
@@ -84,7 +83,7 @@ public class SecondMinigameMaanger : MonoBehaviour
 
         BloodType[] possibleValues = GetPossibleBloodTypes(_bagType);
         
-        rigthFile = (BloodType)possibleValues.GetValue(random.Next(possibleValues.Length));
+        _rightFile = (BloodType)possibleValues.GetValue(random.Next(possibleValues.Length));
         
         BloodType[] otherBloodTypes = RemoveFromArray((BloodType[])allBloodTypes, possibleValues);
         _secondFileType = (BloodType)otherBloodTypes.GetValue(random.Next(otherBloodTypes.Length));
@@ -92,7 +91,7 @@ public class SecondMinigameMaanger : MonoBehaviour
         BloodType[] otherOtherBloodTypes = RemoveFromArray(otherBloodTypes, new []{_secondFileType});
         _thirdFileType = (BloodType)otherOtherBloodTypes.GetValue(random.Next(otherOtherBloodTypes.Length));
         
-        DistribuitBloodTypes(rigthFile, _secondFileType, _thirdFileType); 
+        DistribuitBloodTypes(_rightFile, _secondFileType, _thirdFileType); 
         
         PacientFileComponentFirst.SetType(_firstFileType);
         PacientFileComponentSecond.SetType(_secondFileType);
@@ -162,4 +161,13 @@ public class SecondMinigameMaanger : MonoBehaviour
         _thirdFileType = fileOrder[2];
     }
     
+    public BloodType GetRightFile()
+    {
+        return _rightFile;
+    }
+
+    public void End(bool win)
+    {
+        gameController.endMinigame2(win);
+    }
 }

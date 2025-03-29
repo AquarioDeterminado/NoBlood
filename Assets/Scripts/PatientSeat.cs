@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class MainPageController : MonoBehaviour
+public class PatientSeat : MonoBehaviour
 {
     // Start is called before the first frame update
+    
+    private bool _occupied = false;
     void Start()
     {
         
@@ -17,7 +18,11 @@ public class MainPageController : MonoBehaviour
         
     }
     
-    public void OnPlayButtonClick() {
-        SceneManager.LoadScene("Game");
+    public bool IsOccupied() {
+        return _occupied;
+    }
+    
+    public void SetOccupied(bool occupied) {
+        _occupied = occupied;
     }
 }

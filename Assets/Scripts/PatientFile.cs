@@ -7,7 +7,7 @@ public class PacientFile : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] GameObject MinigameController;
-    private Component minigameController;
+    private SecondMinigameMaanger minigameController;
     private BloodType type;
     
     void Start()
@@ -23,7 +23,13 @@ public class PacientFile : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Debug.Log("Pacient File: " + type);
+        bool win = false;
+        if (minigameController.GetRightFile() == type)
+            win = true;
+        else
+            win = false;
+
+        minigameController.End(win);
     }
 
     public void SetType(BloodType type)
