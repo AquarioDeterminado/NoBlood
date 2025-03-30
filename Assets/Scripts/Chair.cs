@@ -5,7 +5,7 @@ public class Chair : BasePlatform
     [SerializeField] private Transform grabPoint;
     [SerializeField] private InteractableObjectSO interactableObjectSO;
     [SerializeField] private GameObject carryPoint;
-    private Line line;  // Reference to the Line class
+    private Line line;  // Reference to the Line classT
 
     
 
@@ -17,6 +17,10 @@ public class Chair : BasePlatform
     {
         Debug.Log("Override!");
         gameController.StartMinigame1();
+
+        
+
+
     }
 
                 
@@ -28,7 +32,7 @@ public class Chair : BasePlatform
         line = FindObjectOfType<Line>(); // Or another way to reference the Line
 
         // Check if the spawned object in Line is destroyed
-        if (line.HasSpawnedObject())
+        if (line.HasSpawnedObject())    
         {
             line.DestroyInteractableObject();
             Debug.Log("Cannot interact with chair until spawned object is destroyed.");
@@ -42,21 +46,15 @@ public class Chair : BasePlatform
 
   
 
-    public void OnMinigameWin()
+    public void OnMinigameWin( )
     {
         if (interactableObject == null)
         {
-            if (line.HasPerson)
-            {
-                Transform interactableObjectTransform = Instantiate(interactableObjectSO.prefab, grabPoint);
-                interactableObjectTransform.localPosition = Vector3.zero;
 
-                interactableObject = interactableObjectTransform.GetComponent<InteractableObject>();
-                interactableObject.SetInteractableObjectParent(this);
-               
+           
+             
 
-                Destroy(line);
-            }
+
         }
         else
         {

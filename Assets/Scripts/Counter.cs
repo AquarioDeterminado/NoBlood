@@ -8,34 +8,27 @@ public class Counter : BasePlatform
 
     [SerializeField]private InteractableObjectSO interactableObjectSO;
 
-   
-    
-    public override void Interact(Player2 player2)  
-    {
-        if (!HasInteractableObject()){
-            
-                
-            if (player2.HasInteractableObject()) {
-                
-                player2.GetInteractableObject().SetInteractableObjectParent(this);
-            }
-            else
-            {
 
+
+    public override void Interact(Player2 player2)
+    {
+        if (!HasInteractableObject())
+        {
+            if (player2.HasInteractableObject())
+            {
+                player2.GetInteractableObject().SetInteractableObjectParent(this);
+                player2.ClearInteractableObject();  // <-- Make sure to clear it
             }
         }
         else
         {
-            if (player2.HasInteractableObject())
+            if (!player2.HasInteractableObject())
             {
-
-            }
-            else
-            {
-                GetInteractableObject().SetInteractableObjectParent(this);
+                GetInteractableObject().SetInteractableObjectParent(player2);
             }
         }
     }
 
-    
+
+
 }

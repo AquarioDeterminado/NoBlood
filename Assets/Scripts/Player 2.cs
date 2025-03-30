@@ -12,6 +12,8 @@ public class Player2 : MonoBehaviour, IInterectableObjectParent
     private InteractableObject interactableObject;
     [SerializeField] private Transform grabPoint;
 
+   
+
 
 
     private Vector3 lastInteractDir;
